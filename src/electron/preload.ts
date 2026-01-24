@@ -1,6 +1,3 @@
-console.log("✅ PRELOAD FILE IS RUNNING");
-
-
 import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld("api", {

@@ -20,7 +20,6 @@ function TitleBar() {
         <div className="flex items-center no-drag">
           <button 
           onClick={() => {
-          console.log("MINIMIZE CLICKED");
           window.api.minimize();
           }}
           className="no-drag w-10 h-8 hover:bg-zinc-600 flex items-center justify-center">  
