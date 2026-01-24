@@ -1,5 +1,5 @@
-import Vs from "./assets/vs.svg";
-import "./index.css";
+import Vs from "../assets/vs.svg";
+import "../index.css";
 
 function TitleBar() {
   return (

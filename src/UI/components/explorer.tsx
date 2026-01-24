@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import FileTree from "./FileTree";
 
 function Explorer() {
   const defaultWidth = 240;
@@ -34,25 +34,15 @@ function Explorer() {
         <div className="flex flex-col">
             <div 
             style={{ width }}
-            className="explorer relative bg-[#2e2d2d] h-full select-none text-white font-thin text-sm">
-            <div className="ml-9 pt-2 mb-2 mt-2 text-white/70">Explorer</div>
-            <div className="ml-5 mb-4 font-medium text-[12px] h-2 w-full">SYNTAX</div>
-            <ul className="flex flex-col gap-0.5 ">
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">build</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">dist</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">dist-electron</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">dist-slate</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">epic</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">epic</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">epic</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">epic</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">epic</li>
-                <li className="pl-8 hover:bg-white/5 cursor-pointer">epic</li>
-            </ul>
+            className="explorer relative bg-[#222222] h-full select-none text-white font-thin text-sm">
+            <div className="ml-7 mb-2 mt-2.5 text-white/70">Explorer</div>
+            <div className="FileTree ml-2 mb-4 font-medium text-[12px] h-2 ">
+              <FileTree/>
+            </div>
         <div onMouseDown={startResize}
         className="
         absolute top-0 right-0 h-full
-        w-1.5
+        w-0.75
         cursor-col-resize
         bg:transparent
         hover:bg-[#007acc]

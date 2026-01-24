@@ -1,4 +1,4 @@
-import './App.css'
+import '../App.css'
 import TitleBar from './titlebar';
 import Explorer from './explorer';
 import Sidebar from './sidebar';
