@@ -35,7 +35,7 @@ function Explorer() {
             <div 
             style={{ width }}
             className="explorer relative bg-[#222222] h-full select-none text-white font-thin text-sm">
-            <div className="pl-7 pb-2 pt-3 text-white/70 hover:bg-white">Explorer</div>
+            <div className="pl-7 pb-2 pt-3 text-white/70">Explorer</div>
             <div className="FileTree h-full">
               <FileTree/>
             </div>

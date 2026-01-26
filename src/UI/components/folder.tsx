@@ -18,31 +18,29 @@ function Folder({ explorerData }: folderProps) {
   const handleClick = () => {
     setisOpen((prev) => !prev);
   };
-  console.log(explorerData);
   if (explorerData.type === "folder")
     return (
-      <div className="w-full pt-5 flex">
+      <div className="h-full w-full">
         <div className="w-full ">
           <button
             onClick={handleClick}
-            className="w-full hover:bg-white/10"
+            className="w-full hover:bg-white/10 flex"
           >
-            <div className="w-full flex gap-0.5 hover:bg-white/10 text-[14px]">
-              <img src={isOpen ? FolderOpen : FolderClose} alt="" />
+            <div className="w-full hover:bg-white/10 text-[14px] flex ">
+              <img className="w-5 h-5" src={isOpen ? FolderOpen : FolderClose} alt="" />
               {explorerData.name}
             </div>
           </button>
-        <div className="flex flex-col gap-0.5 h-5">
+        <div style={{display: isOpen?"block":"none"}} className="flex flex-col pl-5">
           {explorerData.children?.map((exp) => {
-              return <button className="flex pl-6 hover:bg-white/10">
-                {exp.name}</button>;
+              return <Folder explorerData={exp}/>
             })}
         </div>
       </div>
     </div>
     );
   else {
-    return <span>📄{explorerData.name}</span>;
+    return <div>📄{explorerData.name}</div>;
   }
 }
 
