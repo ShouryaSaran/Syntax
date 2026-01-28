@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import FileTree from "./FileTree";
+import "../index.css"
 
 function Explorer() {
   const DEFAULT_WIDTH = 240;
@@ -9,8 +10,7 @@ function Explorer() {
   const WIDTH_KEY = "explore-width";
   const COLLAPSE_KEY = "explorer-collapsed";
 
-  const collapsedFromStorage =
-    localStorage.getItem(COLLAPSE_KEY) === "true";
+  const collapsedFromStorage = localStorage.getItem(COLLAPSE_KEY) === "true";
 
   const [width, setWidth] = useState<number>(() => {
     if (collapsedFromStorage) return 0;
@@ -19,12 +19,17 @@ function Explorer() {
     return saved > 0 ? saved : DEFAULT_WIDTH;
   });
 
-  const [isCollapsed, setIsCollapsed] =
-    useState<boolean>(collapsedFromStorage);
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(collapsedFromStorage);
 
   const collapsedRef = useRef<boolean>(collapsedFromStorage);
 
   const startResize = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return; 
+    e.preventDefault();   
+    e.stopPropagation();
+    document.body.style.userSelect = "none";
+    document.body.style.cursor = "col-resize";
+
     const startX = e.clientX;
     const startWidth = width;
 
@@ -45,6 +50,8 @@ function Explorer() {
 
     const onMouseUp = () => {
       const collapsed = collapsedRef.current;
+      document.body.style.userSelect = "";
+      document.body.style.cursor = "";
 
       if (!collapsed && width > 0) {
         localStorage.setItem(WIDTH_KEY, String(width));
@@ -61,9 +68,10 @@ function Explorer() {
     window.addEventListener("mouseup", onMouseUp);
   };
 
-  return (
+return (
+  <div className="relative h-full flex">
     <div
-      className="relative h-full bg-[#222222]"
+      className="overflow-hidden background-transparent relative h-full bg-[#222222] flex flex-col"
       style={{
         width: isCollapsed ? 0 : width,
         overflow: "hidden",
@@ -72,25 +80,31 @@ function Explorer() {
     >
       {!isCollapsed && (
         <>
-          <div className="pl-7 pb-2 pt-3 text-white/70 text-sm">
+          <div className="pl-7 pb-2 pt-3 text-white/70 text-sm shrink-0">
             Explorer
           </div>
 
-          <div className="h-full text-white font-thin text-sm">
+          <div className="explorer flex-1 h-full text-white font-thin text-sm">
             <FileTree />
           </div>
         </>
       )}
-      <div
-        onMouseDown={startResize}
-        className="
-          absolute top-0 right-0 h-full
-          w-1.5 z-50 cursor-col-resize
-          hover:bg-[#007acc]
-        "
-      />
     </div>
-  );
+
+    <div
+      onMouseDown={startResize}
+      className="
+        absolute top-0 right-0
+        bg-transparent
+        h-full w-1.5
+        cursor-col-resize
+        hover:bg-[#007acc]
+        z-50
+      "
+    />
+  </div>
+);
+
 }
 
 export default Explorer;

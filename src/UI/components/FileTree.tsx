@@ -7,8 +7,8 @@ export default function FileTree() {
     
     const [explorer,setExplorer] = useState(explorerData);
     return(
-        <>
+        <div className="">
             <Folder explorerData={explorer}/>
-        </>
+        </div>
     );
 }

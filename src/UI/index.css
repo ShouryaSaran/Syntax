@@ -1,6 +1,12 @@
-.drag-region {
-  -webkit-app-region: drag;
+.explorer ::-webkit-scrollbar{
+  display : none;
 }
-.no-drag {
-  -webkit-app-region: no-drag;
+
+.explorer {
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    overflow-y: auto;
+}
+*:focus {
+  outline: none;
 }
