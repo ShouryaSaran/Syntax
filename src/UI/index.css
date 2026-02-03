@@ -10,3 +10,24 @@
 *:focus {
   outline: none;
 }
+.explorer ::-webkit-scrollbar{
+  display : none;
+}
+
+.explorer {
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    overflow-y: auto;
+}
+*:focus {
+  outline: none;
+}
+
+/* ✅ ADD THESE LINES */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}

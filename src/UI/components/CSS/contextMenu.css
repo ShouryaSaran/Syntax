@@ -1,0 +1,19 @@
+div.contextMenubuttons button{
+    display: flex;
+    font-size: small;
+    font-family: 'Consolas', 'Courier New', monospace;
+    padding-left: 40px;
+    
+}
+
+div.contextMenubuttons button.first {
+    padding-top: 8px;
+}
+
+div.contextMenubuttons {
+    border-radius: 9px;
+}
+
+div.horizontal{
+    height: 0.1px;
+}
